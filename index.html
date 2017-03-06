@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="NarrowItDownApp">
+  <head>
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Narrow Down Your Chinese Menu Choice</h1>
+      <div ng-controller="NarrowItDownController as menu">
+      <!-- input group   -->
+          <div class="input-group">
+            <input type="text" placeholder="search term" class="form-control"
+              ng-model="menu.searchTerm"
+              ng-keyup="$event.keyCode == 13 ? menu.narrow(menu.searchTerm) : null">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="menu.narrow(menu.searchTerm)">
+                  Narrow it down for me!
+                </button>
+              </span>
+      </div>
+      <!-- /input-group -->
+        <!-- <div class="form-group">
+          <input type="text" placeholder="search term" class="form-control"
+            ng-model="menu.searchTerm"
+            ng-keyup="$event.keyCode == 13 ? menu.narrow(menu.searchTerm) : null">
+        </div>
+        <div class="form-group narrow-button" >
+          <button class="form-control btn btn-primary"
+            ng-click="menu.narrow(menu.searchTerm);">
+            Narrow It Down For Me!
+          </button>
+        </div> -->
+        <found-items items="menu.found" title="{{menu.title}}"
+          on-remove="menu.removeItem(index)"
+          search="menu.filter">
+        </found-items>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<ul class="list-group">
+  <li ng-if="$ctrl.items.length == 0" class="list-group-item alert alert-danger">
+    <strong>We can't found what you're looking for! :(</strong>
+  </li>
+  <li ng-if="$ctrl.items.length >= 1" class="list-group-item alert alert-success">
+    <strong>If you like {{$ctrl.search}} maybe one of this
+      ({{$ctrl.items.length}}) items will like you</strong>
+  </li>
+  <li ng-repeat="item in $ctrl.items" class="list-group-item">
+    <div class="well">
+      <strong>{{item.name}}</strong> ({{item.short_name}})
+      <p>{{item.description}}</p>
+      <button type="button" class="btn btn-default btn-lg"
+        ng-click="$ctrl.onRemove({index: $index})">
+        <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+        Don't want this one!
+      </button>
+      <!-- <button ng-click="$ctrl.onRemove({index: $index})" class="left">
+        Don't want this one!
+      </button> -->
+    </div>
+  </li>
+</ul>
